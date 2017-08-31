@@ -1,5 +1,3 @@
-/*#ifndef ARBOLBINARIO_H
-#define ARBOLBINARIO_H*/
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -11,10 +9,9 @@ class nodo
 {
 public:
 	int valor;
-    nodo *hijoIzq=nullptr;
-    nodo *hijoDer=nullptr;
-
-    nodo(int dato)
+        nodo *hijoIzq=nullptr;
+       nodo *hijoDer=nullptr;
+  	 nodo(int dato)
     {
     	valor = dato;
     }
@@ -25,7 +22,8 @@ class ArbolBinario
 {
 public:
 	nodo *raiz=NULL;
-
+	
+/*----------------Crear------------------*/
 	void crear(string archivo)
 	{
 		string line;
@@ -45,7 +43,8 @@ public:
 				}
 			}
 		}
-	}	
+	}
+/*---------------------Insertar------------------*/
 	void insertar(int num)
 	{
         insert(raiz, num);
@@ -65,6 +64,8 @@ public:
 			insert(a->hijoDer, num);
 		}
 	}
+
+/*------------------Buscar---------------*/
 	bool buscar(int num, nodo *&a)
 	{
 		if (a==nullptr)
@@ -89,6 +90,7 @@ public:
 			}
 		}
 	}
+/*------------------Eliminar-------------------*/
 	bool elimina(int num)
 	{
 		eliminarNodo(raiz, num);
@@ -116,6 +118,8 @@ public:
 			}
 		}
 	}
+
+/*-------------------Eliminar Real------------------*/
 	bool eliminarReal(nodo *&a, int num)
 		{
 		//nodo *a;
@@ -205,6 +209,8 @@ public:
 					return true;
 				}
 	}
+
+/*----------------------Recorrer el árbol en preorden-------------------*/
 	void preorden(nodo *&a)
 	{
 		if (a==nullptr)
@@ -218,6 +224,7 @@ public:
 			preorden(a->hijoDer);
 		}
 	}
+/*---------------------Recorrer el árbol en postorden------------------------*/
 	void postorden(nodo *&a)
 	{
 		if (a==nullptr)
@@ -231,6 +238,7 @@ public:
 			cout<<a->valor<<" ";
 		}
 	}
+/*---------------------Recorrer el árbol en inorden--------------*/
 	void inorden(nodo *&a)
 	{
 		if (a==nullptr)
@@ -244,24 +252,4 @@ public:
 			inorden(a->hijoDer);
 		}
 	}
-	void imprime()
-	{
-		inorden(raiz);
-	}
-};
-/*void crearArbol(nodo *&a)
-	{
-		int num;
-		char resp;
-		cout<<"Ingrese su dato: "<<endl;
-		cin>>num;
-		a=new nodo(num);
-        cout<<"Tiene hijo izquierdo? y/n "<<endl;               estaba bonito
-        cin>>resp;
-        if (resp=='y')
-        	crearArbol(a->hijoIzq);
-        cout<<"Tiene hijo derecho? y/n "<<endl;
-        cin>>resp;
-        if (resp=='y')
-        	crearArbol(a->hijoDer);
-	}*/
+	

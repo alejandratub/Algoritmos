@@ -1,0 +1,509 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 2
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\align center
+
+\size huge
+\color black
+GRAPH PROCESSING 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+Using SNAP 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+\color black
+Alejandra Tubilla Castellanos 
+\end_layout
+
+\begin_layout Standard
+\align center
+Instituto Tecnológico de Estudios Superiores de Monterrey
+\end_layout
+
+\begin_layout Standard
+\align center
+alejandra.tubilla@gmail.com
+\end_layout
+
+\begin_layout Description
+1.Abstract
+\end_layout
+
+\begin_layout Standard
+This paper provides instructions on how to use and import a dataset from
+ the SNAP (Stanford Network Analysis Platform) library.
+\end_layout
+
+\begin_layout Standard
+It also includes directions on how to use the imported dataset to export
+ the graph into different formats, such as GraphML, GEXF, GDF and JSON Graph
+ Format with GraphSON in 
+\series bold
+\shape italic
+\color black
+C++
+\series default
+\shape default
+\color inherit
+.
+ 
+\end_layout
+
+\begin_layout Standard
+And once exported how to visualize them using Gephi.
+ 
+\end_layout
+
+\begin_layout Description
+2.Introduction
+\end_layout
+
+\begin_layout Standard
+In computer science a Graph is a type of data structure that consists of
+ a finite set of points known as nodes and a set of lines known as edges
+ which connect the nodes in the graph.
+ 
+\end_layout
+
+\begin_layout Standard
+Stanford Network Analysis Platform (SNAP) is a library which is being actively
+ developed since 2004.
+ This library can analyze hundreds of millions of nodes and billions of
+ edges, which can be scale to massive networks.
+ 
+\end_layout
+
+\begin_layout Description
+3.Importing Dataset
+\end_layout
+
+\begin_layout Standard
+For the purpose of this paper, it is relevant to mention the Facebook graph
+ sample dataset from the library mentioned before, is being used to fulfill
+ all needs of development.
+ If needed, visit 
+\series bold
+\shape italic
+\color black
+https://snap.stanford.edu/data/egonets-Facebook.html
+\series default
+\shape default
+\color inherit
+ to obtain this dataset.
+ You may also use the one you see fit, just remember to make the necessary
+ changes.
+\end_layout
+
+\begin_layout Standard
+To import the Facebook data set you will need to download the 
+\end_layout
+
+\begin_layout Standard
+\align block
+
+\series bold
+\shape italic
+\color black
+facebook
+\backslash
+_combined.txt.gz
+\series default
+\shape default
+\color inherit
+, and unzip it in the folder where you will be using it.
+ It is important to remember you will be using SNAP library, for this reason
+ it is important to download the complete library if you have not done that
+ already.
+\end_layout
+
+\begin_layout Standard
+\align block
+Create your main file (main.cpp), in it you will be importing the graph.
+ You will need to include the following line:
+\end_layout
+
+\begin_layout Standard
+\align block
+
+\series bold
+\shape italic
+\color black
+TSnap::LoadEdgeList<DGraph>("facebook
+\end_layout
+
+\begin_layout Standard
+\align block
+
+\series bold
+\shape italic
+\color black
+_combined.txt",0,1);
+\series default
+\shape default
+\color inherit
+ 
+\end_layout
+
+\begin_layout Standard
+\align block
+Beforehand you will need to declare a new PNGraph variable.
+ After you have done this, now you have imported the graph.
+\end_layout
+
+\begin_layout Description
+4.Exporting files
+\end_layout
+
+\begin_layout Standard
+At this point you have now imported the dataset into our file, so you can
+ continue to export the graph into the different formats, to later on visualize
+ them using the GEPHI tool.
+\end_layout
+
+\begin_layout Standard
+To export the graph, you will need to create a function for each of the
+ different formats.
+ Inside each function, crate a new 
+\series bold
+\shape italic
+\color black
+ofstream
+\series default
+\shape default
+\color inherit
+ file giving it a name and extension, for example 
+\series bold
+\shape italic
+\color black
+facebook.graphml
+\series default
+\shape default
+\color inherit
+.
+ After you have created the file, with the help of a cycle, print all the
+ information contained in the file.
+ *Important: each format has a different file*
+\end_layout
+
+\begin_layout Standard
+GraphML O(V+E) because it have two for's inside of an if.
+\end_layout
+
+\begin_layout Standard
+Executing GEXF O(V+E) complexity because inside of an if we have two separated
+ for's to convert each node.
+\end_layout
+
+\begin_layout Standard
+The total time of converting the facebook sample graph to GDF 
+\end_layout
+
+\begin_layout Standard
+The last function implemented was to export the graph to a JSON Graph Format
+ with GraphSON O(V+E).
+\end_layout
+
+\begin_layout Description
+5.Graph visualization
+\end_layout
+
+\begin_layout Standard
+After all files are exported, inicialize Gephi.
+ Once it starts, you will see a welcome window, select 
+\series bold
+\shape italic
+\color black
+
+\begin_inset Quotes eld
+\end_inset
+
+Open graph file
+\begin_inset Quotes erd
+\end_inset
+
+
+\series default
+\shape default
+\color inherit
+.
+ Go to your directory where you have all the exported files and select one.
+ Once you have selected the file, a new window will appear with all the
+ graph information.
+ After you select 
+\series bold
+\shape italic
+\color black
+
+\begin_inset Quotes eld
+\end_inset
+
+Ok
+\begin_inset Quotes erd
+\end_inset
+
+
+\series default
+\shape default
+\color inherit
+ your graph will be created.
+\end_layout
+
+\begin_layout Description
+6.Advantages and Disadvantages of Graph viewers
+\end_layout
+
+\begin_layout Standard
+The main advantage of using a graph viewer, is the easy manipulation and
+ visualization of graphs.
+ This type of tools allows you to see not only the graph, but also all the
+ data stored in them.
+ It also allows you to aply filters to visualize the information you need
+ in each case.
+ 
+\end_layout
+
+\begin_layout Standard
+At the moment, most tools as it is the case of Gephi, do not support hipergraphs
+, making it its main disadvantage.
+ 
+\end_layout
+
+\begin_layout Description
+7.Code
+\end_layout
+
+\begin_layout Standard
+If you wish to see the code, it is available in a github repository, justo
+ go to 
+\series bold
+\shape italic
+\color black
+https://github.com/alejandratub/Algoritmos/ tarea4.
+ 
+\series default
+\shape default
+\color inherit
+There you will find all exporting functions and files created after the
+ export.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape italic
+\color black
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+\color black
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\shape italic
+\size small
+\color black
+Facebook dataset graph 
+\shape default
+\size default
+\color inherit
+
+\begin_inset Graphics
+	filename facebook2.png
+	width 10cm
+	height 10cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+8.References
+\end_layout
+
+\begin_layout Description
+
+\shape italic
+\size footnotesize
+\color black
+1.
+ GEFX Working Group, GEFX File Format, Gephi Comunity Project, 2009.
+\end_layout
+
+\begin_layout Description
+
+\shape italic
+\size footnotesize
+\color black
+2.
+ GraphML team, The GrapML File Format, Graph Drawing, 2016.
+\end_layout
+
+\begin_layout Description
+
+\shape italic
+\size footnotesize
+\color black
+3.
+ Jbmusso, GraphSON Reader and Writer Library, Github, 2016.
+\end_layout
+
+\begin_layout Description
+
+\shape italic
+\size footnotesize
+\color black
+4.
+ Gephi, GDF Format, Gephi, 2017.
+\end_layout
+
+\begin_layout Description
+
+\shape italic
+\size footnotesize
+\color black
+5.
+ Lyx, Lyx the Document Processor, Lyx, 1995.
+\end_layout
+
+\begin_layout Description
+
+\size footnotesize
+6.
+ José Federico Medrano, José Luis Alonso Berrocal and Carlos G.
+ Figuerola, Visualización de Grafos Web, Universidad de Salamanca, 2011.
+\end_layout
+
+\begin_layout Description
+
+\size footnotesize
+7.
+ Doxygen, SNAP Library 4.0, User Reference, Stanford University, 2017.
+\end_layout
+
+\begin_layout Description
+
+\size footnotesize
+8.
+ Jure Leskovec, Stanford Large Network Dataset Collection, Stanford University,
+ 2004.
+\end_layout
+
+\begin_layout Description
+
+\shape italic
+\size footnotesize
+\color black
+9.
+ Javier Bezos, LaTex, Wikipedia, 2017.
+\end_layout
+
+\begin_layout Description
+
+\shape italic
+\size footnotesize
+\color black
+10.
+ LaTex Project, LaTeX – A document preparation system, The LaTex Project,
+ 2017.
+\end_layout
+
+\end_body
+\end_document
